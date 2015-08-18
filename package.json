@@ -1,0 +1,21 @@
+{
+  "name": "lazy-map-viewer",
+  "version": "1.0.0",
+  "description": "TODO",
+  "author": "Miëtek Bak <hello@mietek.io>",
+  "homepage": "https://github.com/mietek/lazy-map-viewer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mietek/lazy-map-viewer"
+  },
+  "license": "MIT",
+  "main": "src/index.js",
+  "dependencies": {
+    "http-request-wrapper": "^1.0.0",
+    "lazy-scroller": "^1.0.0",
+    "react-wrapper": "^1.0.1"
+  },
+  "peerDependencies": {
+    "react": "^0.13.3"
+  }
+}

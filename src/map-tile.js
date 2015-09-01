@@ -15,8 +15,8 @@ module.exports = {
 
   getInitialState: function () {
     return {
-      polylines: [],
-      points: []
+      roadLinks: [],
+      roadNodes: []
     };
   },
 
@@ -26,8 +26,8 @@ module.exports = {
     http.getJsonResource("/json/" + tileId + ".json.gz", function (tile, err) {
         if (tile && this.isMounted()) {
           this.setState({
-              polylines: tile.polylines || [],
-              points:    tile.points || []
+              roadLinks: tile.roadLinks || [],
+              roadNodes: tile.roadNodes || []
             });
         }
       }.bind(this));
@@ -52,22 +52,22 @@ module.exports = {
           width: "100%",
           height: "100%"
         },
-        this.state.polylines.map(function (polyline, i) {
+        this.state.roadLinks.map(function (roadLink, i) {
             return (
               r.polyline({
                   key: "l-" + i,
-                  points: polyline.map(getCoords).join(" "),
+                  points: roadLink.ps.map(getCoords).join(" "),
                   fill: "none",
                   stroke: "#999",
                   strokeWidth: 2
                 }));
           }),
-        this.state.points.map(function (point, i) {
+        this.state.roadNodes.map(function (roadNode, i) {
             return (
               r.circle({
                   key: "n-" + i,
-                  cx: getX(point),
-                  cy: getY(point),
+                  cx: getX(roadNode.p),
+                  cy: getY(roadNode.p),
                   r: 2,
                   fill: "#fff",
                   stroke: "#999",

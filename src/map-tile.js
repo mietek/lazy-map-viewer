@@ -23,7 +23,8 @@ module.exports = {
   componentDidMount: function () {
     var tileCoords = this.props.decodeTileCoords(this.props);
     var tileId = "tile-" + tileCoords.x + "-" + tileCoords.y;
-    http.getJsonResource("/json/" + tileId + ".json.gz", function (tile, err) {
+    var tileExt = process.env.NODE_ENV === "production" ? ".json.gz" : ".json";
+    http.getJsonResource("/json/" + tileId + tileExt, function (tile, err) {
         if (tile && this.isMounted()) {
           this.setState({
               roadLinks: tile.roadLinks || [],
